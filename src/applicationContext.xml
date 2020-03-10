@@ -15,6 +15,12 @@
       - For info on logging levels, see: http://www.vogella.com/tutorials/Logging/article.html
    -->
 
+    <!-- Defining the dependency -->
+
+    <bean id="myFortune"
+          class="com.springdemo.CheckFortuneService">
+    </bean>
+
     <bean id="myLoggerConfig" class="com.springdemo.MyLoggerConfig" init-method="initLogger">
         <property name="rootLoggerLevel" value="FINE"/>
         <property name="printedLoggerLevel" value="FINE"/>
@@ -25,7 +31,7 @@
     </bean>
 
     <bean id="myCoach"
-          class="com.springdemo.BaseballCoach">
+          class="com.springdemo.TrackCoach">
         <constructor-arg ref="myFortuneService"/>
     </bean>
 

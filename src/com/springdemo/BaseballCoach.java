@@ -2,6 +2,7 @@ package com.springdemo;
 
 public class BaseballCoach implements Coach {
 
+    //defining a private field for the dependency
     private FortuneService fortuneService;
 
     public BaseballCoach(FortuneService theFortuneService) {
@@ -15,6 +16,6 @@ public class BaseballCoach implements Coach {
 
     @Override
     public String getDailyFortune() {
-        return null;
+        return fortuneService.getFortune();
     }
 }
