@@ -7,21 +7,29 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-  <!-- Define your beans here -->
+    <!-- Define your beans here -->
 
-  <!--
-	Add a logger config to see logging messages.
-	- For more detailed logs, set values to "FINEST"
-	- For info on logging levels, see: http://www.vogella.com/tutorials/Logging/article.html
- -->
+    <!--
+      Add a logger config to see logging messages.
+      - For more detailed logs, set values to "FINEST"
+      - For info on logging levels, see: http://www.vogella.com/tutorials/Logging/article.html
+   -->
 
+    <bean id="myLoggerConfig" class="com.springdemo.MyLoggerConfig" init-method="initLogger">
+        <property name="rootLoggerLevel" value="FINE"/>
+        <property name="printedLoggerLevel" value="FINE"/>
+    </bean>
 
-  <bean id="myLoggerConfig" class="com.springdemo.MyLoggerConfig" init-method="initLogger">
-    <property name="rootLoggerLevel" value="FINE" />
-    <property name="printedLoggerLevel" value="FINE"/>
-  </bean>
+    <bean id="myFortuneService"
+          class="com.springdemo.CheckFortuneService">
+    </bean>
 
-<bean id="myCoach"
-  class="com.springdemo.BaseballCoach">
-</bean>
+    <bean id="myCoach"
+          class="com.springdemo.BaseballCoach">
+        <constructor-arg ref="myFortuneService"/>
+    </bean>
+
+    <bean id="fbCoach"
+          class="com.springdemo.FootballCoach">
+    </bean>
 </beans>
