@@ -37,5 +37,6 @@
 
     <bean id="fbCoach"
           class="com.springdemo.FootballCoach">
+        <property name="fortuneService" ref="myFortuneService"/>
     </bean>
 </beans>
