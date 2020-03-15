@@ -28,7 +28,10 @@
     </bean>
 
     <bean id="myCoach"
-          class="com.springdemo.TrackCoach">
+          class="com.springdemo.TrackCoach"
+          scope="prototype"
+          init-method="initSampleMethod"
+          destroy-method="destroySampleMethod">
         <constructor-arg ref="myFortuneService"/>
     </bean>
 
