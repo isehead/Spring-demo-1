@@ -23,13 +23,19 @@
         <property name="printedLoggerLevel" value="FINE"/>
     </bean>
 
+    <bean id="customProcessor"
+          class="com.springdemo.MyCustomBeanProcessor">
+    </bean>
+
     <bean id="myFortuneService"
           class="com.springdemo.CheckFortuneService">
     </bean>
 
     <bean id="myCoach"
           class="com.springdemo.TrackCoach"
-          scope="prototype">
+          scope="prototype"
+          init-method="initSampleMethod"
+          destroy-method="destroy">
         <constructor-arg ref="myFortuneService"/>
     </bean>
 
