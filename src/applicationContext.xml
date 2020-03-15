@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -6,6 +7,9 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--Load the properties file-->
+    <context:property-placeholder location="classpath:sports.properties"/>
 
     <!-- Define your beans here -->
 
@@ -17,14 +21,12 @@
 
     <!-- Defining the dependency -->
 
-    <bean id="myFortune"
-          class="com.springdemo.CheckFortuneService">
-    </bean>
-
     <bean id="myLoggerConfig" class="com.springdemo.MyLoggerConfig" init-method="initLogger">
         <property name="rootLoggerLevel" value="FINE"/>
         <property name="printedLoggerLevel" value="FINE"/>
     </bean>
+
+    <!-- this works in HelloSpring -->
 
     <bean id="myFortuneService"
           class="com.springdemo.CheckFortuneService">
@@ -35,10 +37,15 @@
         <constructor-arg ref="myFortuneService"/>
     </bean>
 
+    <!-- my own implementation -->
+
+    <bean id="mySampleFortuneService"
+          class="com.springdemo.FortuneServiceMySample">
+    </bean>
 
     <bean id="fbCoach"
           class="com.springdemo.FootballCoach">
-        <property name="fortuneService" ref="myFortuneService"/>
+        <constructor-arg ref="mySampleFortuneService"/>
     </bean>
 
     <bean id="myCricketCoach"
@@ -46,7 +53,8 @@
         <property name="fortuneService" ref="myFortuneService"/>
 
         <!-- Injecting literals -->
-        <property name="emailAddress" value="testEmail@test.com"/>
-        <property name="team" value="Sunrisers"/>
+        <property name="emailAddress" value="${sports.email}"/>
+        <property name="team" value="${sports.team}"/>
     </bean>
+
 </beans>

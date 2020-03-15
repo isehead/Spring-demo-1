@@ -7,12 +7,12 @@ public class CricketCoach implements Coach {
     private FortuneService fortuneService;
 
     public void setEmailAddress(String emailAddress) {
-        System.out.println("Setting e-mail address...");
+        System.out.println("Setting e-mail address..");
         this.emailAddress = emailAddress;
     }
 
     public void setTeam(String team) {
-        System.out.println("Setting team...");
+        System.out.println("Setting team..");
         this.team = team;
     }
 

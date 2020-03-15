@@ -4,6 +4,6 @@ public class CheckFortuneService implements FortuneService {
 
     @Override
     public String getFortune() {
-        return ("Today is your lucky day");
+        return ("Today is your lucky day (CheckFortuneService default)");
     }
 }

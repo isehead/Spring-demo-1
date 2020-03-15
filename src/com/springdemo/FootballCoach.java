@@ -2,15 +2,13 @@ package com.springdemo;
 
 public class FootballCoach implements Coach {
 
-    private FortuneService fortuneService;
+    private FortuneServiceMySample fortuneServiceMySample;
 
-    public FootballCoach() {
-        System.out.println("Inside no-arg constructor");
+    public FootballCoach(FortuneServiceMySample fortuneServiceMySample) {
+        this.fortuneServiceMySample = fortuneServiceMySample;
     }
-
-    public void setFortuneService(FortuneService fortuneService) {
-        System.out.println("Inside setter");
-        this.fortuneService = fortuneService;
+    public FootballCoach() {
+        System.out.println("Inside fbCoach no-arg constructor");
     }
 
     @Override
@@ -20,6 +18,6 @@ public class FootballCoach implements Coach {
 
     @Override
     public String getDailyFortune() {
-        return fortuneService.getFortune();
+        return ("Daily fortune " + fortuneServiceMySample.getFortune());
     }
 }
